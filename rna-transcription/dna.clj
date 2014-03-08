@@ -3,15 +3,10 @@
 
 (def m {\C \G \G \C \T \A \A \U \U \A})
 
-(defn translate-letter [n] (m n))
+(defn translate-letter [n] (if (contains? m n)
+  (m n)
+  (throw (new AssertionError (str "no")))))
 
 (defn to-rna [dna]
-  (let [t (apply str (map translate-letter (seq dna)))]
-    (assert (= (count dna) (count t)))
-    t
-    )
-  )
+  (apply str (map translate-letter (seq dna))))
 
-(to-rna "XCGFGGTDTTAA")
-(to-rna "G")
-(count "123")
