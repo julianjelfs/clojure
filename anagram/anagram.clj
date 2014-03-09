@@ -7,5 +7,4 @@
     (and (not= lw la) (= (sort-word lw) (sort-word la)))))
 
 (defn anagrams-for [word, words]
-  (let [p (fn [a] (is-anag? word a))]
-    (filter p words )))
+    (filter (partial is-anag? word) words ))
