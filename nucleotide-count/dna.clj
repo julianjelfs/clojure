@@ -6,5 +6,7 @@
 	(merge nucleotides (frequencies s)))
 
 (defn count [c s]
-	(let [n (nucleotide-counts s)]
-		(n c 0)))
+	(if (contains? (merge nucleotides {\U 0}) c)
+    ((nucleotide-counts s) c 0)
+    (throw (new Exception (str "invalid nucleotide")))))
+
